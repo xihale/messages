@@ -62,7 +62,11 @@ var autoTextarea = function (elem, extra, maxHeight) {
     change();
 };
 autoTextarea(document.getElementById("val"));
-function dp(v){
-    alert($(v).$("[name='due']").val());
-    return false;
+let text=document.getElementById('text');
+let input_type=document.getElementById("type");
+let menu=document.getElementById('menu').children;
+for(let i=0;i<menu.length;++i){
+    menu[i].addEventListener("click",()=>{
+        input_type.value=text.innerText=menu[i].innerText;
+    });
 }
