@@ -7,7 +7,7 @@ if(!empty($_GET)) {
 	if ($res['type'] == 0) header("Location: " . $res['message']);
 	else {
 		header("Content-Type: text/plain");
-		echo $res['messages'];
+		echo $res['message'];
 	}
 	exit(0);
 }

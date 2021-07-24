@@ -12,7 +12,6 @@ function get($surl)
 		"); //读取当surl==$surl的全部数据
 			$result->execute();
 			$result=$result->fetch();
-			echo $result['message'];
 			if (empty($result))return false;
 			return $result;
 		} catch (PDOException $e) {
