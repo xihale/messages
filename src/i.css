@@ -1,0 +1,31 @@
+form{
+    position: absolute;
+    left: 25%;
+    width: 50%;
+    top: 25%;
+    height: 50%;
+}
+form>div{
+    width: 100%;
+    height: 100%;
+}
+#surl,#due{
+    width: 80%;
+    margin: 0 auto;
+}
+#val{
+    resize: none;
+    overflow: hidden;
+    font-size: 150%;
+    display: block;
+    margin:0 auto;
+    width: 95%;
+    height: 10%;
+    line-height: 110%;
+    padding:2px;
+}
+textarea {
+    outline: 0 none;
+    border-color: rgba(82, 168, 236, 0.8);
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1), 0 0 8px rgba(82, 168, 236, 0.6);
+}

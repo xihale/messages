@@ -5,5 +5,4 @@ $mysql=[
     "username"=>"messages",
     "dbname"=>"messages",
     "password"=>"messages",
-    "header"=>"ms_",
 ];
