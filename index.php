@@ -4,7 +4,7 @@ require_once "function.php";
 if(!empty($_GET)) {
 	$res = get(substr($_SERVER['REQUEST_URI'], 2));
 	if ($res == false) exit("短链无效");
-	if ($res['type'] == 0) header("Location: " . $res['message']);
+	if ($res['type'] == 0&&strpos($res['type'],'\n')==-1) header("Location: " . $res['message']);
 	else {
 		header("Content-Type: text/plain");
 		echo $res['message'];
