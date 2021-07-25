@@ -3,6 +3,7 @@ require_once "config.php";
 
 function get($surl)
 {
+	$surl=urldecode($surl);
 	global $mysql;
 	if (!($surl=="" || empty($mysql))) {
 		try {

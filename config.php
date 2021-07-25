@@ -1,7 +1,7 @@
 <?php
 
 $mysql=[
-    "server"=>"127.0.0.1",
+    "server"=>"120.53.125.52",
     "username"=>"messages",
     "dbname"=>"messages",
     "password"=>"messages",
