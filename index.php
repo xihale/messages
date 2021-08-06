@@ -18,6 +18,7 @@ if(!empty($_GET)) {
 <head>
 	<meta charset="UTF-8">
 	<title>TSMS-Take some messages</title>
+	<link rel="icon" href="/messages.png" type="image/x-icon" />
 	<link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
 	<script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
 	<script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
