@@ -5,20 +5,24 @@
 *::selection{
     background-color: #1e1e1e;
 }
-form{
+div.form-group{
     position: absolute;
     left: 25%;
     width: 50%;
     top: 25%;
     height: 50%;
 }
-form>div{
-    width: 100%;
-    height: 100%;
+div.form-group>div{
+    position: relative;
+    left: 2.5%;
 }
 #surl,#due{
-    width: 80%;
-    margin: 0 auto;
+    position: relative;
+    margin-right: 0.6%;
+    margin-bottom: 1%;
+    width: 47.2%;
+    /*margin: 0 auto;*/
+    float: left;
 }
 #val{
     resize: none;
@@ -35,25 +39,6 @@ textarea {
     outline: 0 none;
     border-color: rgba(82, 168, 236, 0.8);
     box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1), 0 0 8px rgba(82, 168, 236, 0.6);
-}
-::-webkit-scrollbar {
-    width: 6px;
-    height: 8px;
-    background-color: #1e1e1e;
-}
-
-/*定义滚动条轨道 内阴影+圆角*/
-::-webkit-scrollbar-track {
-    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-    border-radius: 10px;
-    background-color: #1e1e1e;
-}
-
-/*定义滑块 内阴影+圆角*/
-::-webkit-scrollbar-thumb {
-    border-radius: 10px;
-    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
-    background-color: #585858;
 }
 ul.dropdown-menu li a{
     background-color: #323232;
