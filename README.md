@@ -10,11 +10,11 @@
    ```
    
 2. 配置参数
-   首先打开`config.php`
-   `server`->`数据库所在服务器的ip`
-   `username`->`数据库用户名`
-   `dbname`->`数据库名称`
-   `password`->`用户密码`
+   首先打开`config.php`  
+   `server`->`数据库所在服务器的ip`  
+   `username`->`数据库用户名`  
+   `dbname`->`数据库名称`  
+   `password`->`用户密码` 
 
 3. 创建数据表
 
