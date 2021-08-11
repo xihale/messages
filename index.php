@@ -22,7 +22,7 @@ if(!empty($_GET)) {
 	<link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
 	<script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
 	<script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
-	<link href="/src/i.css" rel="stylesheet">
+	<link href="https://m.xihale.top:444/src/i.css" rel="stylesheet">
 </head>
 <body>
 <div class="form-group">
@@ -56,7 +56,7 @@ if(!empty($_GET)) {
             spop({
                 template:data,
                 style:success,
-                autoclose:3000
+                autoclose:8000
             });
         });
         $.ajaxSettings.async=true;

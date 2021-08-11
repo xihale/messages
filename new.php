@@ -8,21 +8,22 @@ $list=[
 	$type = $_POST['type']
 ];
 foreach ($list as $i){
-	if(empty($i))exit(1);
+	if(empty($i))exit("参数不完整,请检查是否有漏填项!");
 }
 if(get($surl)!=false){
 	exit("此链已被占用!");
 }
 
 if (!empty($mysql)) {
-    try {
-        $db=new PDO("mysql:host=".$mysql['server'].";dbname=".$mysql['dbname'],$mysql['username'],$mysql['password']);//连接数据库
-        $db->exec("
+	try {
+		$db=new PDO("mysql:host=".$mysql['server'].";dbname=".$mysql['dbname'],$mysql['username'],$mysql['password']);//连接数据库
+		$db->exec("
             INSERT INTO messages (surl,message,due,type)
             VALUES ('$surl','$message',$due,".($_POST['type']=="文本"?'1':'0').")
         ");
-        echo '<a href="/?'.$_POST['surl'].'">/?'.$_POST['surl'].'</a>';
-    }catch (PDOException $e){
-        exit($e->getMessage());
-    }
+		$host=(empty($_SERVER['HTTPS'])||$_SERVER['HTTPS']=="off"?"http://":"https://").$_SERVER['HTTP_HOST'];
+		echo '<a href="'.$host.'/?'.$_POST['surl'].'">'.$host.'/?'.$_POST['surl'].'</a>';
+	}catch (PDOException $e){
+		exit($e->getMessage());
+	}
 }
