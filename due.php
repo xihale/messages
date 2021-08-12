@@ -1,4 +1,13 @@
 <?php
+
+$is_Date=new date("Ymd");
+$fp=fopen("date","r");
+if(fgets($fp)==$is_Date)exit("Tried again.");
+fclose($fp);
+$fp=fopen("date","w");
+fputs($fp,$is_Date);
+fclose($fp);
+
 require_once "config.php";
 if (!empty($mysql)) {
     try {
@@ -10,12 +19,12 @@ if (!empty($mysql)) {
         while ($res = $result->fetch()) {
             if ($res['due'] == 0) {
                 $db->exec("
-                    DELETE FROM messages WHERE surl=" . $res['surl'] . "
+                    DELETE FROM messages WHERE surl='" . $res['surl'] . "'
                 ");
                 continue; //检测到期后删除并跳过循环
             }
             $db->exec("
-                UPDATE messages SET due='" . (intval($res['due']) - 1) . "' WHERE surl=" . $res['surl'] . "
+                UPDATE messages SET due='" . (intval($res['due']) - 1) . "' WHERE surl='" . $res['surl'] . "'
             ");
         }
     }catch (PDOException $e){

@@ -4,7 +4,7 @@ require_once "function.php";
 if(!empty($_GET)) {
 	$res = get(substr($_SERVER['REQUEST_URI'], 2));
 	if ($res == false) exit("短链无效");
-	if ($res['type'] == 0&&strpos($res['type'],'\n')==false) header("Location: " . $res['message']);
+	if ($res['type'] == 0&&strpos($res['type'],'\n')==false) header("Location: " . (preg_match("/\bhttp[s*]:/",$res['message'])==false?"http://".$res['message']:$res['message']));
 	else {
 		header("Content-Type: text/plain");
 		echo $res['message'];
@@ -22,11 +22,11 @@ if(!empty($_GET)) {
 	<link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
 	<script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
 	<script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
-	<link href="https://m.xihale.top:444/src/i.css" rel="stylesheet">
+	<link href="/src/i.css" rel="stylesheet">
 </head>
 <body>
 <div class="form-group">
-	<div><input name="surl" id="surl" type="text" class="form-control" placeholder="短链接" autocomplete="off" style="background: #323232;border: none;color: #4191f5;"><input name="due" id="due" class="form-control" placeholder="持续时间: 1~365" onkeyup="value=value.replace(/[^1-6]/g,'');if(value>365)value=365;" autocomplete="off" style="background: #323232;border: none;color: #4191f5;"></div><br>
+	<div><input name="surl" id="surl" type="text" class="form-control" placeholder="短链接" autocomplete="off" style="background: #323232;border: none;color: #4191f5;"><input name="due" id="due" class="form-control" placeholder="持续时间: 1~365" onkeyup="value=value.replace(/\b(0+)|[^0-6]/g,'');if(value>365)value=365;" autocomplete="off" style="background: #323232;border: none;color: #4191f5;"></div><br>
 	<textarea name="message" id="val" class="form-control val" rows="3" placeholder="链接或文本内容" spellcheck="false" style="background: #323232;border: none;padding-top: 0.5%;color: #4191f5"></textarea><br>
 	<input name="type" id="type" type="text" value="链接" style="display: none">
 	<div style="position: absolute;left: 31.7%;width: 40%;">
@@ -44,14 +44,14 @@ if(!empty($_GET)) {
 	</div>
 </div>
 </body>
-<script src="https://m.xihale.top:444/src/i.js"></script>
+<script src="/src/i.js"></script>
 <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="https://xihale.gitee.io/test/spop/spop.min.js"></script>
 <link href="https://xihale.gitee.io/test/spop/spop.min.css" rel="stylesheet"/>
 <script>
     function push(){
         $.ajaxSettings.async=false;
-        $.post("https://m.xihale.top:444/new.php",{"surl":$("#surl").val(),"message":$("#val").val(),"due":$("#due").val(),"type":$("#type").val()},function(data){
+        $.post("/new.php",{"surl":$("#surl").val(),"message":$("#val").val(),"due":$("#due").val(),"type":$("#type").val()},function(data){
             var success=data.substr(0,2)=='<a'?"success":"warning";
             spop({
                 template:data,
