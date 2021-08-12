@@ -1,5 +1,6 @@
 <?php
 require_once "config.php";
+fclose(fopen("date","w"));
 if (!empty($mysql)) {
     $db=new PDO("mysql:host=".$mysql['server'].";dbname=".$mysql['dbname'],$mysql['username'],$mysql['password']);//连接数据库
     $db->exec('
