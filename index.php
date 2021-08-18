@@ -5,9 +5,20 @@ if(!empty($_GET)) {
 	$res = get(substr($_SERVER['REQUEST_URI'], 2));
 	if ($res == false) exit("短链无效");
 	if ($res['type'] == 0&&strpos($res['type'],'\n')==false) header("Location: " . (preg_match("/\bhttp[s*]:/",$res['message'])==false?"http://".$res['message']:$res['message']));
-	else {
+	else if($res['type']==1){
 		header("Content-Type: text/plain");
 		echo $res['message'];
+	}
+	else if($res['type']==2){
+		?>
+		<link rel="stylesheet" href="https://lib.code.xihale.top/highlight/atom-one-dark.min.css"/>
+		<script src="https://lib.code.xihale.top/highlight/highlight.min.js"></script>
+		<pre><code>
+		<?php
+			echo $res['message'];
+		?>
+		</code></pre>
+		<?php
 	}
 	exit(0);
 }
@@ -26,7 +37,7 @@ if(!empty($_GET)) {
 </head>
 <body>
 <div class="form-group">
-	<div><input name="surl" id="surl" type="text" class="form-control" placeholder="短链接" autocomplete="off" style="background: #323232;border: none;color: #4191f5;"><input name="due" id="due" class="form-control" placeholder="持续时间: 1~365" onkeyup="value=value.replace(/\b(0+)|[^0-6]/g,'');if(value>365)value=365;" autocomplete="off" style="background: #323232;border: none;color: #4191f5;"></div><br>
+	<div><input name="surl" id="surl" type="text" class="form-control" placeholder="短链接" autocomplete="off" style="background: #323232;border: none;color: #4191f5;"><input name="due" id="due" class="form-control" placeholder="持续时间: 1~365" onkeyup="value=value.replace(/\b(0+)|[^0-9]/g,'');if(value>365)value=365;" autocomplete="off" style="background: #323232;border: none;color: #4191f5;"></div><br>
 	<textarea name="message" id="val" class="form-control val" rows="3" placeholder="链接或文本内容" spellcheck="false" style="background: #323232;border: none;padding-top: 0.5%;color: #4191f5"></textarea><br>
 	<input name="type" id="type" type="text" value="链接" style="display: none">
 	<div style="position: absolute;left: 31.7%;width: 40%;">
@@ -38,6 +49,7 @@ if(!empty($_GET)) {
 			<ul id="menu" class="dropdown-menu" role="menu" style="background: #323232;border: none;">
 				<li><a>链接</a></li>
 				<li><a>文本</a></li>
+				<li><a>代码</a></li>
 			</ul>
 		</div>
 		<button class="btn btn-default dropdown-toggle" style="vertical-align: top;width: 50%;display: inline-block;background: #323232;color: #387bd0;border: none;" onclick="push();">创建</button>

@@ -8,7 +8,7 @@ if (!empty($mysql)) {
                     surl VARCHAR(10) NOT NULL,
                     message VARCHAR(102400) NOT NULL,
                     due INT(3) UNSIGNED,
-                    type boolean NOT NULL
+                    type INT(1) NOT NULL
                 );
             ');
 }
