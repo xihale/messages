@@ -4,20 +4,22 @@ require_once "function.php";
 if(!empty($_GET)) {
 	$res = get(substr($_SERVER['REQUEST_URI'], 2));
 	if ($res == false) exit("短链无效");
-	if ($res['type'] == 0&&strpos($res['type'],'\n')==false) header("Location: " . (preg_match("/\bhttp[s*]:/",$res['message'])==false?"http://".$res['message']:$res['message']));
+	if ($res['type'] == 0&&strpos($res['message'],'\n')==false) header("Location: " . (preg_match("/\bhttp[s*]:/",$res['message'])==false?"http://".$res['message']:$res['message']));
 	else if($res['type']==1){
 		header("Content-Type: text/plain");
 		echo $res['message'];
 	}
-	else if($res['type']==2){
+	else{
 		?>
 		<link rel="stylesheet" href="https://lib.code.xihale.top/highlight/atom-one-dark.min.css"/>
 		<script src="https://lib.code.xihale.top/highlight/highlight.min.js"></script>
-		<pre><code>
-		<?php
-			echo $res['message'];
-		?>
-		</code></pre>
+		<script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+		<body>
+			<pre><code><?php echo preg_replace("/>/i","&gt;",preg_replace("/</i","&lt;",$res['message'])) ?></code></pre>
+			<script defer>
+	            hljs.initHighlightingOnLoad();
+			</script>
+		</body>
 		<?php
 	}
 	exit(0);

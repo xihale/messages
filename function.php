@@ -9,15 +9,15 @@ function get($surl)
 		try {
 			$db = new PDO("mysql:host=" . $mysql['server'] . ";dbname=" . $mysql['dbname'], $mysql['username'], $mysql['password']); //连接数据库
 			$result = $db->prepare("
-			SELECT * FROM messages WHERE surl='$surl'
+			SELECT * FROM messages WHERE `surl`='$surl'
 		"); //读取当surl==$surl的全部数据
 			$result->execute();
 			$result=$result->fetch();
 			if (empty($result))return false;
+			$db = null;
 			return $result;
 		} catch (PDOException $e) {
 			exit($e->getMessage());
 		}
-		$db = null;
 	}
 }

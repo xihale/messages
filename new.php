@@ -16,9 +16,10 @@ if(get($surl)!=false){
 
 if (!empty($mysql)) {
 	try {
+		$message=addslashes($message);
 		$db=new PDO("mysql:host=".$mysql['server'].";dbname=".$mysql['dbname'],$mysql['username'],$mysql['password']);//连接数据库
 		$db->exec("
-            INSERT INTO messages (surl,message,due,type)
+            INSERT INTO messages (`surl`,`message`,`due`,`type`)
             VALUES ('$surl','$message',$due,".($type=="文本"?'1':($type=="链接"?'0':'2')).")
         ");
 		$host=(empty($_SERVER['HTTPS'])||$_SERVER['HTTPS']=="off"?"http://":"https://").$_SERVER['HTTP_HOST'];
