@@ -11,14 +11,14 @@ if(!empty($_GET)) {
 	}
 	else{
 		?>
-		<link rel="stylesheet" href="https://lib.code.xihale.top/highlight/atom-one-dark.min.css"/>
-		<script src="https://lib.code.xihale.top/highlight/highlight.min.js"></script>
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/xihale/lib@main/highlight/atom-one-dark.min.css"/>
+		<script src="https://cdn.jsdelivr.net/gh/xihale/lib@main/highlight/highlight.min.js"></script>
 		<script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
 		<body>
-			<pre><code><?php echo preg_replace("/>/i","&gt;",preg_replace("/</i","&lt;",$res['message'])) ?></code></pre>
-			<script defer>
-	            hljs.initHighlightingOnLoad();
-			</script>
+		<pre><code><?php echo preg_replace("/>/i","&gt;",preg_replace("/</i","&lt;",$res['message'])) ?></code></pre>
+		<script defer>
+            hljs.initHighlightingOnLoad();
+		</script>
 		</body>
 		<?php
 	}
