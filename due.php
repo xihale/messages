@@ -12,6 +12,7 @@ require_once "config.php";
 if (!empty($mysql)) {
     try {
         $db = new PDO("mysql:host=" . $mysql['server'] . ";dbname=" . $mysql['dbname'], $mysql['username'], $mysql['password']);//连接数据库
+        $db->query("SET NAMES utf8");
         $result = $db->prepare("
             SELECT surl,due FROM messages
         ");
