@@ -2,31 +2,14 @@
 require_once "function.php";
 
 if(!empty($_GET)) {
-<<<<<<< HEAD
-<<<<<<< HEAD
-	$res = get(substr($_SERVER['REQUEST_URI'], 2));
-	if ($res == false) exit("短链无效");
-	if ($res['type'] == 0&&strpos($res['message'],'\n')==-1) header("Location: " . (preg_match("/\bhttp[s*]:/",$res['message'])==false?"http://".$res['message']:$res['message']));
-=======
 	$res = get(substr($_SERVER['REQUEST_URI'], 1));
 	if ($res == false) exit("短链无效");
 	if ($res['type'] == 0&&strpos($res['message'],'\n')==false) header("Location: " . (preg_match("/\bhttp[s*]:/",$res['message'])==false?"http://".$res['message']:$res['message']));
->>>>>>> d88234c (修复了诺干BUG)
-=======
-	$val=substr($_SERVER['REQUEST_URI'], $_SERVER['REQUEST_URI']=='?'?2:1);
-	$res = get($val);
-	if ($res == false) exit("短链 ".$val." 无效");
-	if ($res['type'] == 0&&strpos($res['message'],'\n')===false) header("Location: " . (preg_match("/\bhttp[s*]:/",$res['message'])==false?"http://".$res['message']:$res['message']));
->>>>>>> fda3242a06286403a14ff63579d699342bc53c70
 	else if($res['type']==1){
 		header("Content-Type: text/plain");
 		echo $res['message'];
 	}
-<<<<<<< HEAD
-	else{
-=======
 	else if($res['type']==2){
->>>>>>> d88234c (修复了诺干BUG)
 		?>
 		<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/xihale/lib@main/highlight/atom-one-dark.min.css"/>
 		<script src="https://cdn.jsdelivr.net/gh/xihale/lib@main/highlight/highlight.min.js"></script>
@@ -38,11 +21,8 @@ if(!empty($_GET)) {
 		</script>
 		</body>
 		<?php
-<<<<<<< HEAD
-=======
 	}else{
-		header("Location:https://aword.xurl.ga/#".$res['message'].replace(/\n/g,"\\n"));
->>>>>>> d88234c (修复了诺干BUG)
+		header("Location:https://aword.xurl.ga/#".str_replace("\n","\\n",$res['message']));
 	}
 	exit(0);
 }
@@ -74,10 +54,7 @@ if(!empty($_GET)) {
 				<li><a>链接</a></li>
 				<li><a>文本</a></li>
 				<li><a>代码</a></li>
-<<<<<<< HEAD
-=======
 				<li><a>一言</a></li>
->>>>>>> d88234c (修复了诺干BUG)
 			</ul>
 		</div>
 		<button class="btn btn-default dropdown-toggle" style="vertical-align: top;width: 50%;display: inline-block;background: #323232;color: #387bd0;border: none;" onclick="push();">创建</button>
