@@ -3,6 +3,7 @@ require_once "function.php";
 
 if(!empty($_GET)) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	$res = get(substr($_SERVER['REQUEST_URI'], 2));
 	if ($res == false) exit("短链无效");
 	if ($res['type'] == 0&&strpos($res['message'],'\n')==-1) header("Location: " . (preg_match("/\bhttp[s*]:/",$res['message'])==false?"http://".$res['message']:$res['message']));
@@ -11,6 +12,12 @@ if(!empty($_GET)) {
 	if ($res == false) exit("短链无效");
 	if ($res['type'] == 0&&strpos($res['message'],'\n')==false) header("Location: " . (preg_match("/\bhttp[s*]:/",$res['message'])==false?"http://".$res['message']:$res['message']));
 >>>>>>> d88234c (修复了诺干BUG)
+=======
+	$val=substr($_SERVER['REQUEST_URI'], $_SERVER['REQUEST_URI']=='?'?2:1);
+	$res = get($val);
+	if ($res == false) exit("短链 ".$val." 无效");
+	if ($res['type'] == 0&&strpos($res['message'],'\n')===false) header("Location: " . (preg_match("/\bhttp[s*]:/",$res['message'])==false?"http://".$res['message']:$res['message']));
+>>>>>>> fda3242a06286403a14ff63579d699342bc53c70
 	else if($res['type']==1){
 		header("Content-Type: text/plain");
 		echo $res['message'];
