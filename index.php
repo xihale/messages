@@ -34,7 +34,7 @@ if(!empty($_GET)) {
 <<<<<<< HEAD
 =======
 	}else{
-		header("Location:https://aword.xurl.ga/#".$res['message']);
+		header("Location:https://aword.xurl.ga/#".$res['message'].replace(/\n/g,"\\n"));
 >>>>>>> d88234c (修复了诺干BUG)
 	}
 	exit(0);
