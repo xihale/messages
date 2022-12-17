@@ -36,7 +36,8 @@ if (!empty($mysql)) {
             INSERT INTO messages (`surl`,`message`,`due`,`type`)
             VALUES ('$surl','$message',$due,".$type.")
         ");
-		$host=(empty($_SERVER['HTTPS'])||$_SERVER['HTTPS']=="off"?"http://":"https://").$_SERVER['HTTP_HOST'];
+// 		$host=(empty($_SERVER['HTTPS'])||$_SERVER['HTTPS']=="off"?"http://":"https://").$_SERVER['HTTP_HOST'];
+        $host="http://x.xihale.top";
 		echo '<a href="'.$host.'/'.$_POST['surl'].'">'.$host.'/'.$_POST['surl'].'</a>';
 	}catch (PDOException $e){
 		exit($e->getMessage());

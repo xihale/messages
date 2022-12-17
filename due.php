@@ -1,6 +1,6 @@
 <?php
 
-$is_Date=new date("Ymd");
+$is_Date=date("Ymd");
 $fp=fopen("date","r");
 if(fgets($fp)==$is_Date)exit("Tried again.");
 fclose($fp);
