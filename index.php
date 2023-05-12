@@ -3,7 +3,11 @@ require_once "function.php";
 
 if(!empty($_GET)) {
 	$res = get(substr($_SERVER['REQUEST_URI'], 1));
+<<<<<<< HEAD
+	if ($res == false) exit("短链无效".substr($_SERVER['REQUEST_URI'], 1));
+=======
 	if ($res == false) exit("短链无效");
+>>>>>>> 21dc57ffbfe781d6d6bf3ca57cc9d35550448bbc
 	if ($res['type'] == 0&&!strpos($res['message'],"\n")&&!strpos($res['message'],"\r\n")) header("Location: " . (preg_match("/\bhttps*://",$res['message'])===0?("http://".$res['message']):$res['message']));
 	else if($res['type']==1){
 		header("Content-Type: text/plain");
